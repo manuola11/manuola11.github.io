@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logan Manuola — Portfolio</title>
+  <meta name="description" content="Data analytics portfolio: Power BI dashboards, baseball analytics, and MLB pitch data exploration." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="brand">Logan Manuola</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Data analytics &amp; visualization</h1>
+      <p class="lede">
+        I turn messy operational and sports data into dashboards and studies that answer
+        a specific question. Power BI, Excel modeling, and web-based data exploration.
+      </p>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <a class="project-card" href="projects/baseball-woba.html">
+          <h3>Environmental Effects on wOBA</h3>
+          <p class="tag">Baseball analytics · Statistical study</p>
+          <p>
+            How weather, park, and environmental conditions move weighted on-base
+            average. Methodology, data sources, and findings.
+          </p>
+        </a>
+
+        <a class="project-card" href="projects/greenscapes.html">
+          <h3>Greenscapes — Landscaping Operations</h3>
+          <p class="tag">Power BI · 52 job IDs · 3 dashboards</p>
+          <p>
+            Client concentration, service-line optimization, and profitability analysis
+            for a landscaping company. Interactive Power BI dashboards embedded.
+          </p>
+        </a>
+
+        <a class="project-card" href="projects/mlb-pitching.html">
+          <h3>MLB Pitch Data Explorer</h3>
+          <p class="tag">In progress · Web app · Pitch-by-pitch data</p>
+          <p>
+            A site my collaborator and I are building on top of pitch-by-pitch MLB data
+            for open-ended exploration and findings.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <ul class="skill-list">
+        <li>Power BI (data modeling, DAX, dashboard design)</li>
+        <li>Excel (analysis, pivot models, embedded visuals)</li>
+        <li>SQL &amp; data wrangling</li>
+        <li>Baseball / sports analytics — Statcast, wOBA, pitch-level data</li>
+        <li>HTML / CSS / JavaScript</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:loganmanuola@icloud.com">loganmanuola@icloud.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Logan Manuola</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
