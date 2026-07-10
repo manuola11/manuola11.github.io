@@ -5,97 +5,350 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Logan Manuola — Portfolio</title>
   <meta name="description" content="Data analytics portfolio: Power BI dashboards, baseball analytics, and MLB pitch data exploration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="home">
+  <div class="bg-decor" aria-hidden="true"></div>
+
   <header class="site-header">
     <nav class="nav">
       <a href="index.html" class="brand">Logan Manuola</a>
       <ul class="nav-links">
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
-      <h1>Data Analytics &amp; Business Intelligence</h1>
-      <p class="lede">
-        I use SQL (PostgreSQL), Power BI, Excel and Python to transform raw data into
-        dashboards and analytical studies that drive actionable insights.
-      </p>
+      <div class="hero-content">
+        <div class="hero-left reveal">
+          <span class="status-pill"><span class="dot"></span> Open to data analyst opportunities</span>
+          <h1>Data Analytics &amp; Business Intelligence</h1>
+          <p class="lede">
+            I use SQL (PostgreSQL), Power BI, Excel and Python to transform raw data into
+            dashboards and analytical studies that drive actionable insights.
+          </p>
+          <div class="badges">
+            <span class="badge">SQL</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Power BI</span>
+            <span class="badge">Excel</span>
+            <span class="badge">Python</span>
+            <span class="badge">DAX</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">View projects</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="hero-kpis reveal">
+          <div class="kpi-card">
+            <span class="kpi-num">3</span>
+            <span class="kpi-label">Projects</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-num">3</span>
+            <span class="kpi-label">Dashboards</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-num">6+</span>
+            <span class="kpi-label">Tools</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="projects" class="section">
-      <h2>Projects</h2>
-      <div class="project-grid">
-        <a class="project-card" href="projects/baseball-woba.html">
-          <h3>Does Humidity Affect Offensive Performance in MLB?</h3>
-          <p class="tag">Excel · Baseball analytics · OLS regression</p>
-          <p>
-            An OLS regression study of whether ballpark humidity moves team wOBA across
-            all 30 MLB teams, 2021–24. Full paper, workbook, and results.
-          </p>
-        </a>
+    <!-- FEATURED PROJECT -->
+    <section id="projects" class="section reveal">
+      <div class="section-head">
+        <span class="eyebrow">Featured project</span>
+      </div>
 
-        <a class="project-card" href="projects/greenscapes.html">
-          <h3>Greenscapes — End-to-End Power BI Project</h3>
+      <article class="featured">
+        <div class="featured-info">
           <p class="tag">Power BI · SQL · DAX · 3 dashboards</p>
+          <h3>Greenscapes — End-to-End Power BI Project</h3>
           <p>
             Client concentration, service-line optimization, and profitability analysis
             for a landscaping company. Dashboard screenshots plus the downloadable .pbix.
           </p>
+          <div class="badges">
+            <span class="badge">Power BI</span>
+            <span class="badge">SQL</span>
+            <span class="badge">DAX</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="projects/greenscapes.html">View project</a>
+          </div>
+        </div>
+
+        <a class="featured-preview" href="projects/greenscapes.html" aria-label="Open the Greenscapes project">
+          <img src="assets/images/Crew-Productivity-Dashboard.png"
+               alt="Greenscapes Power BI dashboard preview" loading="lazy" />
+        </a>
+      </article>
+    </section>
+
+    <!-- OTHER PROJECTS -->
+    <section class="section reveal">
+      <div class="section-head">
+        <span class="eyebrow">More work</span>
+        <h2 class="section-title">Other projects</h2>
+      </div>
+
+      <div class="project-grid two">
+        <a class="project-card" href="projects/baseball-woba.html">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18" />
+              <path d="m19 9-5 5-4-4-3 3" />
+            </svg>
+          </span>
+          <p class="tag">Excel · Baseball analytics · OLS regression</p>
+          <h3>Does Humidity Affect Offensive Performance in MLB?</h3>
+          <p>
+            An OLS regression study of whether ballpark humidity moves team wOBA across
+            all 30 MLB teams, 2021–24. Full paper, workbook, and results.
+          </p>
+          <span class="card-link">View project →</span>
         </a>
 
         <a class="project-card" href="projects/mlb-pitching.html">
-          <h3>MLB Pitch Data Explorer</h3>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M7 4c2 3.2 2 12.8 0 16M17 4c-2 3.2-2 12.8 0 16" />
+            </svg>
+          </span>
           <p class="tag">In progress · Web app · Pitch-by-pitch data</p>
+          <h3>MLB Pitch Data Explorer</h3>
           <p>
             A site my collaborator and I are building on top of pitch-by-pitch MLB data
             for open-ended exploration and findings.
           </p>
+          <span class="card-link">View project →</span>
         </a>
       </div>
     </section>
 
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-      <ul class="skill-list">
-        <li>Power BI (data modeling, DAX, dashboard design)</li>
-        <li>Excel (analysis, pivot models, embedded visuals)</li>
-        <li>SQL &amp; data wrangling</li>
-        <li>Baseball / sports analytics — Statcast, wOBA, pitch-level data</li>
-        <li>HTML / CSS / JavaScript</li>
-      </ul>
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+      <div class="section-head">
+        <span class="eyebrow">Toolkit</span>
+        <h2 class="section-title">Core Competencies</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>
+            <span class="skill-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18" /><rect x="7" y="11" width="3" height="6" />
+                <rect x="12" y="7" width="3" height="10" /><rect x="17" y="13" width="3" height="4" />
+              </svg>
+            </span>
+            Data Analysis
+          </h3>
+          <div class="skill-pills">
+            <span class="pill">Excel</span>
+            <span class="pill">Pivot Models</span>
+            <span class="pill">OLS Regression</span>
+            <span class="pill">Data Wrangling</span>
+            <span class="pill">Sports Analytics</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>
+            <span class="skill-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="8" ry="3" />
+                <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
+                <path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+              </svg>
+            </span>
+            Databases
+          </h3>
+          <div class="skill-pills">
+            <span class="pill">SQL</span>
+            <span class="pill">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>
+            <span class="skill-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a9 9 0 1 0 9 9h-9z" /><path d="M12 3v9h9" opacity="0.5" />
+              </svg>
+            </span>
+            Visualization
+          </h3>
+          <div class="skill-pills">
+            <span class="pill">Power BI</span>
+            <span class="pill">DAX</span>
+            <span class="pill">Dashboard Design</span>
+            <span class="pill">Data Modeling</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>
+            <span class="skill-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="m8 8-4 4 4 4" /><path d="m16 8 4 4-4 4" /><path d="m13 6-2 12" />
+              </svg>
+            </span>
+            Programming
+          </h3>
+          <div class="skill-pills">
+            <span class="pill">Python</span>
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:loganmanuola@icloud.com" aria-label="Email Logan Manuola">
-          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <path d="m3 7 9 6 9-6" />
-          </svg>
-          <span>loganmanuola@icloud.com</span>
-        </a>
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <div class="section-head">
+        <span class="eyebrow">About</span>
+        <h2 class="section-title">About Me</h2>
+      </div>
 
-        <a class="contact-link" href="https://www.linkedin.com/in/loganmanuola/"
-           target="_blank" rel="noopener" aria-label="Logan Manuola on LinkedIn">
-          <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 8.98h4v12H3v-12zM9 8.98h3.8v1.64h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v6.31h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97v5.69H9v-12z" />
-          </svg>
-          <span>LinkedIn</span>
-        </a>
+      <div class="about-card">
+        <p>
+          I'm a data analyst with a passion for transforming raw data into meaningful insights.
+          With a background in economics from Rowan University, I combine statistical analysis,
+          SQL, Power BI, Excel, and Python to build end-to-end analytics projects that solve
+          practical business problems and explore questions in sports analytics.
+        </p>
+        <p>
+          My portfolio includes business intelligence dashboards built from PostgreSQL databases,
+          as well as independent MLB research using regression analysis and pitch-level data.
+          Whether I'm analyzing company performance or baseball trends, I enjoy using data to
+          uncover patterns and communicate insights that support better decisions.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT / LET'S CONNECT -->
+    <section id="contact" class="section reveal">
+      <div class="connect">
+        <div class="connect-main">
+          <h2 class="section-title">Let's Connect</h2>
+          <p class="connect-lede">
+            I'm currently seeking entry-level Data Analyst opportunities. I'd love to connect
+            regarding analytics, business intelligence, or sports data.
+          </p>
+
+          <div class="connect-grid">
+            <a class="connect-card" href="mailto:loganmanuola@icloud.com" aria-label="Email Logan Manuola">
+              <span class="cc-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+              </span>
+              <span class="cc-text">
+                <span class="cc-label">Email</span>
+                <span class="cc-sub">loganmanuola@icloud.com</span>
+              </span>
+            </a>
+
+            <a class="connect-card" href="https://www.linkedin.com/in/loganmanuola/"
+               target="_blank" rel="noopener" aria-label="Logan Manuola on LinkedIn">
+              <span class="cc-ico">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 8.98h4v12H3v-12zM9 8.98h3.8v1.64h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v6.31h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97v5.69H9v-12z" />
+                </svg>
+              </span>
+              <span class="cc-text">
+                <span class="cc-label">LinkedIn</span>
+                <span class="cc-sub">in/loganmanuola</span>
+              </span>
+            </a>
+
+            <a class="connect-card" href="https://github.com/manuola11"
+               target="_blank" rel="noopener" aria-label="Logan Manuola on GitHub">
+              <span class="cc-ico">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.49l-.01-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 2.5-.34c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.58.69.48A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z" />
+                </svg>
+              </span>
+              <span class="cc-text">
+                <span class="cc-label">GitHub</span>
+                <span class="cc-sub">github.com/manuola11</span>
+              </span>
+            </a>
+
+            <a class="connect-card" href="assets/files/Logan-Manuola-Resume.pdf" download
+               aria-label="Download Logan Manuola's resume">
+              <span class="cc-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 2v6h6" />
+                  <path d="M12 12v6" />
+                  <path d="m9 15 3 3 3-3" />
+                </svg>
+              </span>
+              <span class="cc-text">
+                <span class="cc-label">Resume</span>
+                <span class="cc-sub">Download PDF</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="connect-aside">
+          <div class="info-block">
+            <span class="info-label">Location</span>
+            <span class="info-value">South Jersey / Philadelphia Area</span>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Availability</span>
+            <span class="info-value">
+              Open to Full-Time Data Analyst opportunities (Remote, Hybrid, or On-site)
+            </span>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Logan Manuola</p>
+    <div class="footer-inner">
+      <span class="footer-logo">LM</span>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#projects">Projects</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#skills">Skills</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#about">About</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#contact">Contact</a>
+      </nav>
+      <span class="footer-copy">&copy; <span id="year"></span> Logan Manuola</span>
+    </div>
   </footer>
 
   <script src="script.js"></script>
