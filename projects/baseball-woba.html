@@ -55,33 +55,36 @@
 
     <h2>Question</h2>
     <p>
-      Does <strong>average humidity</strong> affect offensive performance in Major League
-      Baseball, and does any effect survive once other environmental, ballpark, and roster
-      factors are controlled for? The tension is physical versus physiological: humid air is
-      less dense, so a batted ball meets less resistance and can carry farther — but humidity
-      also raises fatigue, dehydration, and cardiovascular strain on hitters. This study
-      tests whether, on net, humidity moves a team's home weighted on-base average (wOBA).
+      <strong>Does average humidity affect offensive performance in Major League Baseball once
+      environmental, ballpark, and roster characteristics are taken into account?</strong> While
+      humid air is less dense and may allow batted balls to travel farther, it can also
+      increase fatigue, dehydration, and cardiovascular strain on hitters. This study
+      examines whether these competing effects produce a measurable change in a team's home
+      weighted on-base average (wOBA).
     </p>
 
     <h2>Data</h2>
     <p>
-      A team-season panel covering all 30 MLB teams across the <strong>2021–2024</strong>
-      seasons. The dependent variable is home wOBA (mean 0.318); the independent variable of
-      interest is average humidity (mean 0.682, i.e. 68.2%). wOBA is used over older metrics
-      like batting average or OPS because it captures total offensive production in a single
-      number without favoring a particular type of hitter.
+      The analysis uses a panel dataset containing all 30 MLB teams over the 2021–2024
+      seasons. Home weighted on-base average (wOBA) serves as the dependent variable, while
+      average humidity is the primary independent variable. Average home wOBA across the
+      sample is 0.318, and average humidity is 68.2%. wOBA was selected because it provides a
+      comprehensive measure of offensive production by assigning appropriate value to each
+      offensive outcome rather than emphasizing a single aspect of hitting.
     </p>
+    <h3>Model Variables</h3>
     <ul>
       <li><strong>Dependent variable:</strong> Home wOBA</li>
-      <li><strong>Variable of interest:</strong> Average humidity percentage</li>
+      <li><strong>Primary independent variable:</strong> Average humidity</li>
       <li>
-        <strong>Controls:</strong> average fan attendance, hitting-coach years of service,
-        average ballpark dimension, average temperature, windspeed, position-player payroll,
-        and sprint speed
+        <strong>Control variables:</strong> Average fan attendance, hitting coach years of
+        service, average ballpark dimension, average temperature, windspeed, position player
+        payroll, and sprint speed
       </li>
       <li>
-        <strong>Dropped:</strong> ballpark elevation (multicollinear with humidity and
-        temperature) and total home plate appearances (severe endogeneity)
+        <strong>Excluded variables:</strong> Ballpark elevation (removed because of
+        multicollinearity with humidity and temperature) and total home plate appearances
+        (removed because of severe endogeneity)
       </li>
     </ul>
     <p>Sources:</p>
@@ -97,22 +100,26 @@
 
     <h2>Methodology</h2>
     <p>
-      I estimate the relationship with ordinary least squares (OLS) regression across five
-      specifications — a baseline model plus alternative specifications that test the
-      robustness of the results. The general form of the regression is:
+      Using panel data from all 30 Major League Baseball teams across the 2021–2024 seasons,
+      I estimate whether average humidity percentage has a statistically significant effect
+      on offensive production, measured by home weighted on-base average (wOBA). To do so, I
+      use Ordinary Least Squares (OLS) regression to estimate five model specifications,
+      including a baseline model and four alternative specifications to evaluate the
+      robustness of the results. The general form of the regression equation is presented
+      below:
     </p>
     <p class="equation">
       wOBA<sub>it</sub> = β<sub>0</sub> + β<sub>1</sub>&thinsp;Humidity<sub>it</sub>
       + γX<sub>it</sub> + ε<sub>it</sub>
     </p>
     <p>
-      where <em>X</em> is the set of controls (average fan attendance, hitting-coach years of
-      service, average temperature, and average ballpark dimension). Fan attendance is scaled
-      by dividing by 1,000 so its coefficient is readable. The baseline is then extended with
-      four alternative specifications: adding position-player payroll and sprint speed;
-      adding annual fixed effects; replacing payroll with its natural logarithm; and removing
-      the top and bottom ten wOBA outliers. Standard errors appear in parentheses beneath
-      each coefficient.
+      Where <em>X</em> represents a set of controls that includes average fan attendance,
+      years of service the hitting coach has for the team, average temperature in degrees
+      Fahrenheit, and average ballpark dimension in feet. The alternative specifications
+      introduce position player payroll, sprint speed, annual fixed effects, the natural
+      logarithm of position player payroll, and outlier adjustments to home weighted on-base
+      average to evaluate whether the results remain consistent across different model
+      specifications.
     </p>
 
     <h2>Results</h2>
@@ -121,8 +128,10 @@
       <img src="../assets/images/woba-figure1-scatter.png"
            alt="Scatterplot of average humidity percentage versus home wOBA for all 30 MLB teams, 2021–2024, showing a broad spread with no clear relationship" loading="lazy" />
       <figcaption>
-        Figure 1 — Average humidity vs. home wOBA across all 30 teams (2021–24). The wide
-        spread shows no clear bivariate relationship, motivating the regression analysis.
+        Figure 1 — Average humidity vs. home wOBA across all 30 teams (2021–24). The
+        scatterplot shows no clear relationship between average humidity percentage and home
+        weighted on-base average, supporting the use of regression analysis to examine the
+        relationship while controlling for additional variables.
       </figcaption>
     </figure>
 
@@ -277,50 +286,40 @@
     </p>
 
     <h2>Findings</h2>
-    <p>
-      The headline result is a <strong>null finding: average humidity does not have a
-      statistically significant effect on offensive production</strong> once relevant
-      controls are included.
-    </p>
     <ul>
       <li>
-        <strong>Humidity's apparent effect is omitted-variable bias.</strong> Humidity looks
-        significant at the α = .05 level in the early baseline models, but the moment
-        <strong>average temperature</strong> is added, the humidity coefficient loses
-        significance (p = 0.125). Temperature captures environmental variation that humidity
-        was standing in for.
+        <strong>The regression results indicate that average humidity does not have a
+        statistically significant effect on home weighted on-base average (wOBA) once
+        environmental and team-level control variables are included.</strong> Although
+        humidity appears statistically significant in the initial baseline specifications, the
+        relationship disappears after controlling for average temperature, suggesting that the
+        initial association was influenced by omitted environmental factors rather than
+        humidity itself.
       </li>
       <li>
-        <strong>The null result holds everywhere.</strong> Across all four alternative
-        specifications — adding payroll and sprint speed, annual fixed effects, log payroll,
-        and removing wOBA outliers — humidity stays insignificant. Its estimated effect is
-        statistically indistinguishable from zero.
+        <strong>This conclusion remains consistent across all four alternative model
+        specifications.</strong> Adding position player payroll and sprint speed,
+        incorporating annual fixed effects, replacing payroll with its natural logarithm, and
+        removing the highest and lowest home weighted on-base average observations all support
+        the conclusion that average humidity is not a statistically significant predictor of
+        offensive production.
       </li>
       <li>
-        <strong>Average fan attendance</strong> is a consistently positive, highly
-        significant predictor (α = .01 in most specifications) — larger home crowds line up
-        with higher home offensive output.
+        <strong>Several control variables produced meaningful results.</strong> Average fan
+        attendance, average temperature, and the natural logarithm of position player payroll
+        were positively associated with home offensive production, while hitting coach years
+        of service and average ballpark dimensions were not statistically significant in any
+        specification.
       </li>
       <li>
-        <strong>Average temperature</strong> is positive and significant at α = .01 once
-        included (easing to α = .05 when wOBA outliers are removed) — warmer conditions
-        associate with more offense.
-      </li>
-      <li>
-        <strong>Payroll matters only in log form.</strong> Raw position-player payroll is
-        insignificant, but its natural logarithm is significant at α = .05 — consistent with
-        diminishing returns to spending.
-      </li>
-      <li>
-        <strong>Hitting-coach experience and ballpark dimension</strong> were not significant
-        in any specification.
+        <strong>Overall, the findings suggest that any physical advantage created by reduced
+        air density in humid conditions is likely offset by physiological factors such as
+        fatigue and dehydration, resulting in no measurable net effect on offensive
+        production.</strong> More broadly, the analysis demonstrates the importance of
+        incorporating relevant control variables and testing multiple model specifications
+        before drawing conclusions from statistical relationships.
       </li>
     </ul>
-    <p>
-      Taken together, the likely interpretation is that the physical benefit of less-dense
-      humid air is offset by the physiological toll humidity places on hitters — leaving no
-      net effect on offensive production.
-    </p>
   </main>
 </body>
 </html>
