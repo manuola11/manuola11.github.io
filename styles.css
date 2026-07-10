@@ -687,9 +687,10 @@ main {
 .home .project-card:hover .card-link { color: var(--accent-dim); }
 
 /* ---------- Skills ---------- */
-.home .skills-grid { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
-@media (min-width: 640px) { .home .skills-grid { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 980px) { .home .skills-grid { grid-template-columns: repeat(4, 1fr); } }
+.home .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; }
+.home .skill-card { flex: 1 1 100%; }
+@media (min-width: 640px) { .home .skill-card { flex: 0 1 calc((100% - 1.25rem) / 2); } }
+@media (min-width: 980px) { .home .skill-card { flex: 0 1 calc((100% - 2 * 1.25rem) / 3); } }
 
 .home .skill-card {
   padding: 1.6rem;
