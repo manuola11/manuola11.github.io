@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MLB Pitch Data Explorer — Logan Manuola</title>
+  <title>MLB Pitch Analytics Platform — Logan Manuola</title>
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -28,36 +28,53 @@
       </svg>
       <span>Home</span>
     </a>
-    <h1>MLB Pitch Data Explorer</h1>
-    <p class="project-meta">In progress · Web app · Pitch-by-pitch data</p>
+    <h1>MLB Pitch Analytics Platform</h1>
+    <p class="project-meta">In progress · Python · React · Statcast data</p>
 
-    <div class="status-banner">Status: in active development with a collaborator.</div>
+    <div class="status-banner">Status: in active development — an equal, two-person collaboration.</div>
+
+    <div class="callout">
+      <p>
+        <strong>Repository.</strong> This is an open, in-progress build.
+        <a href="https://github.com/N-Rossi/Python-MLB-Whiff_Percentage" target="_blank" rel="noopener">Browse
+        the code on GitHub</a>. It runs on a deployed data pipeline, but there isn't a public
+        demo URL yet.
+      </p>
+    </div>
 
     <h2>What it is</h2>
     <p>
-      A web app built on top of pitch-by-pitch MLB data so we can freely explore the
-      dataset — filter by pitcher, pitch type, count, and location, then surface
-      findings that aren't obvious from a season-level box score.
+      A pitch-analytics platform built on Statcast pitch-by-pitch data. It ingests every
+      pitch, processes it into queryable tables, and surfaces tactical scouting insights
+      through an interactive web interface: empirical whiff and put-away rates for two-pitch
+      sequences, batter vulnerabilities by pitch type and count, and the single pitch that
+      offers the most leverage in a given pitcher–batter matchup.
     </p>
 
     <h2>Why</h2>
-    <p>
-      <em>TODO: what specific question(s) motivated the build — e.g., how do pitch
-      sequencing choices change with count, is there a repeatable edge in a certain
-      location, etc.</em>
-    </p>
+    <p>The project answers scouting-style questions that a season-level box score can't:</p>
+    <ul>
+      <li>Which two-pitch sequences generate the highest whiff or put-away rates?</li>
+      <li>Where does a specific batter struggle most against particular pitch types, counts, and locations?</li>
+      <li>Which single pitch offers the highest leverage in any pitcher–batter matchup?</li>
+    </ul>
 
     <h2>Stack</h2>
-    <p>
-      <em>TODO: list the actual stack you're using — data source, backend, frontend,
-      any charting library.</em>
-    </p>
+    <ul>
+      <li><strong>Data:</strong> Statcast (2015–2026), ingested with the <code>pybaseball</code> library in chunked, rate-limited weekly pulls</li>
+      <li><strong>Backend:</strong> Python — a FastAPI REST API and DuckDB running embedded SQL over Parquet columnar storage, with Typer CLI tooling</li>
+      <li><strong>Frontend:</strong> React + Vite</li>
+      <li><strong>Modeling:</strong> empirical-Bayes shrinkage to stabilize rate estimates against small samples (raw, league-baseline, and shrunk variants)</li>
+      <li><strong>Infrastructure:</strong> deployed on an Ubuntu ARM VM with systemd services running nightly ingestion</li>
+    </ul>
 
     <h2>Progress &amp; findings so far</h2>
-    <p>
-      <em>TODO: 2–4 bullets of what's working and what you've already learned. Link
-      the repo or a live URL when ready.</em>
-    </p>
+    <ul>
+      <li>A working data pipeline ingests and compresses roughly 1.4&nbsp;GB of raw Statcast data into Hive-partitioned Parquet, with derived tables rebuilt on top.</li>
+      <li>Seven derived tables power the analyzers — pitcher pitch mix, zone tendency, and sequences; batter whiff profile, swing decisions, and sequence outcomes; and matchup edges.</li>
+      <li>Three analyzers are working in the app: a pitch-sequence viewer (pitcher and batter perspectives), a matchup edge detector that surfaces the top leverage pairings, and an ad-hoc SQL shell.</li>
+      <li>An early study looks at <strong>first-pitch offspeed</strong> — whether hard throwers (96+&nbsp;mph) get better called-strike-plus-whiff (CSW%) results leading at-bats with offspeed pitches than soft throwers.</li>
+    </ul>
   </main>
 </body>
 </html>

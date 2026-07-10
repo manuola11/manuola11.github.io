@@ -10,7 +10,10 @@ Live site: https://manuola11.github.io/ *(update if your Pages URL differs)*
   in Excel) of whether ballpark humidity moves team wOBA across all 30 MLB teams, 2021–24.
 - **Greenscapes — End-to-End Power BI Project** — three Power BI dashboards over 52 job IDs
   covering service-line optimization, crew productivity, and client concentration.
-- **MLB Pitch Data Explorer** *(in progress)* — a web app built on pitch-by-pitch MLB data.
+- **MLB Pitch Analytics Platform** *(in progress)* — a Statcast pitch-analytics platform
+  (Python/FastAPI/DuckDB + React) surfacing whiff rates, two-pitch sequences, and
+  pitcher–batter matchup edges. An equal collaboration; code at
+  [N-Rossi/Python-MLB-Whiff_Percentage](https://github.com/N-Rossi/Python-MLB-Whiff_Percentage).
 
 ## A note on the Power BI dashboards
 
