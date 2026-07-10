@@ -2,7 +2,7 @@
 
 Data analytics portfolio: Power BI dashboards, baseball analytics, and web-based data exploration.
 
-Live site: https://manuola11.github.io/ *(update if your Pages URL differs)*
+Live site: **https://manuola11.github.io**
 
 ## Projects
 
