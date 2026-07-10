@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Greenscapes — Landscaping Operations — Logan Manuola</title>
+  <title>Greenscapes — End-to-End Power BI Project — Logan Manuola</title>
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -18,58 +18,85 @@
   </header>
 
   <main class="project-page">
-    <a class="back" href="../index.html#projects">&larr; All projects</a>
-    <h1>Greenscapes — Landscaping Operations</h1>
+    <a class="back" href="../index.html" aria-label="Back to home">
+      <span aria-hidden="true">&larr;</span>
+      <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 10.5 12 3l9 7.5" />
+        <path d="M5 9.5V21h14V9.5" />
+        <path d="M9.5 21v-6h5v6" />
+      </svg>
+      <span>Home</span>
+    </a>
+    <h1>Greenscapes — End-to-End Power BI Project</h1>
     <p class="project-meta">Power BI · 52 job IDs · 3 dashboards</p>
 
-    <h2>Context</h2>
-    <p>
-      Operational data for a landscaping company across 52 job IDs. I built three
-      Power BI dashboards to answer distinct questions about the book of business.
-    </p>
-
-    <h2>Dashboard 1 — Client Concentration</h2>
-    <p>
-      <em>TODO: 2–3 sentences on what you looked at (revenue share by top clients,
-      dependency risk, etc.) and what you found.</em>
-    </p>
-    <div class="dashboard-embed">
-      <!-- Replace src with your Power BI Publish-to-web embed URL -->
-      <div class="embed-placeholder">
-        Paste your Power BI &ldquo;Publish to web&rdquo; iframe <code>src</code> here,
-        then delete this placeholder.
-      </div>
-      <!-- <iframe title="Client Concentration" src="PASTE_EMBED_URL_HERE" allowfullscreen></iframe> -->
+    <div class="callout">
+      <p>
+        <strong>Viewing these dashboards.</strong> These were built in Power BI Desktop.
+        A live interactive embed isn't available here because my Microsoft account is a
+        school tenant with &ldquo;Publish to web&rdquo; disabled by the admin. Instead,
+        each dashboard is shown as a full screenshot below, and you can
+        <a href="../assets/files/greenscapes.pbix" download>download the original .pbix file</a>
+        to open and interact with it in Power BI Desktop (free, Windows).
+      </p>
     </div>
 
-    <h2>Dashboard 2 — Service-Line Optimization</h2>
+    <h2>Overview</h2>
     <p>
-      <em>TODO: which service lines drive margin vs. volume, seasonality, recommended mix.</em>
+      I built this end-to-end business intelligence project by importing operational data
+      from PostgreSQL into Power BI, creating DAX measures, and designing interactive
+      dashboards that translate business data into insights. This portfolio project focuses
+      on identifying the key drivers of revenue, profitability, and labor efficiency across
+      the business.
     </p>
-    <div class="dashboard-embed">
-      <div class="embed-placeholder">
-        Paste your Power BI &ldquo;Publish to web&rdquo; iframe <code>src</code> here.
-      </div>
-      <!-- <iframe title="Service-Line Optimization" src="PASTE_EMBED_URL_HERE" allowfullscreen></iframe> -->
-    </div>
 
-    <h2>Dashboard 3 — TODO (fill in name)</h2>
+    <h2>Dashboard 1 — Service-Line Optimization</h2>
     <p>
-      <em>TODO: the third dashboard — fill in the name and one-paragraph summary.</em>
+      Compares profitability across service lines to identify which offerings drive
+      margin versus volume.
     </p>
-    <div class="dashboard-embed">
-      <div class="embed-placeholder">
-        Paste your Power BI &ldquo;Publish to web&rdquo; iframe <code>src</code> here.
-      </div>
-      <!-- <iframe title="Dashboard 3" src="PASTE_EMBED_URL_HERE" allowfullscreen></iframe> -->
-    </div>
+    <figure class="dashboard-shot">
+      <img src="../assets/images/Service-Line-Optimization-Dashboard.png"
+           alt="Greenscapes Dashboard 1 — Service-Line Optimization" loading="lazy" />
+    </figure>
+    <p class="takeaway">
+      <strong>Takeaways:</strong> Continue using mulching services to maintain a consistent
+      influx of work, but allocate additional marketing towards higher-margin services such
+      as Stone Work and Hauling Services to maximize profit.
+    </p>
 
-    <h2>Takeaways</h2>
-    <p><em>TODO: 3–5 bullet-style recommendations you'd give the business.</em></p>
+    <h2>Dashboard 2 — Crew Productivity</h2>
+    <p>
+      Examines whether crew size and supervision affect job profitability and labor
+      efficiency.
+    </p>
+    <figure class="dashboard-shot">
+      <img src="../assets/images/Crew-Productivity-Dashboard.png"
+           alt="Greenscapes Dashboard 2 — Crew Productivity" loading="lazy" />
+    </figure>
+    <p class="takeaway">
+      <strong>Takeaways:</strong> Increasing crew size does not consistently improve
+      financial performance. Smaller crews delivered stronger profit per labor hour and
+      gross margins, which indicates optimizing crew allocation could improve productivity
+      without increasing labor hours.
+    </p>
+
+    <h2>Dashboard 3 — Client Concentration</h2>
+    <p>
+      Analyzes how Greenscapes' revenue is distributed across clients to identify risks
+      of dependency.
+    </p>
+    <figure class="dashboard-shot">
+      <img src="../assets/images/Client-Concentration-Dashboard.png"
+           alt="Greenscapes Dashboard 3 — Client Concentration" loading="lazy" />
+    </figure>
+    <p class="takeaway">
+      <strong>Takeaways:</strong> Top 5 clients drive 52.8% of total revenue, with one
+      client (Villaris) alone accounting for about 24%. Repeat clients generate
+      significantly more revenue ($7K vs $1.5K) than one-time clients, pointing to
+      customer loyalty as a strong driver of revenue.
+    </p>
   </main>
-
-  <footer class="site-footer">
-    <p><a href="../index.html">Home</a></p>
-  </footer>
 </body>
 </html>

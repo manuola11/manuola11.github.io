@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Environmental Effects on wOBA — Logan Manuola</title>
+  <title>Does Humidity Affect Offensive Performance in MLB? — Logan Manuola</title>
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -18,39 +18,309 @@
   </header>
 
   <main class="project-page">
-    <a class="back" href="../index.html#projects">&larr; All projects</a>
-    <h1>Environmental Effects on wOBA</h1>
-    <p class="project-meta">Baseball analytics · Statistical study</p>
+    <a class="back" href="../index.html" aria-label="Back to home">
+      <span aria-hidden="true">&larr;</span>
+      <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 10.5 12 3l9 7.5" />
+        <path d="M5 9.5V21h14V9.5" />
+        <path d="M9.5 21v-6h5v6" />
+      </svg>
+      <span>Home</span>
+    </a>
+    <h1>Does Humidity Affect Offensive Performance in Major League Baseball?</h1>
+    <p class="project-meta">Excel · Baseball analytics · OLS regression study</p>
+
+    <div class="contact-links">
+      <a class="contact-link" href="../assets/pdfs/ballpark-conditions-analysis.pdf"
+         target="_blank" rel="noopener">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <path d="M14 2v6h6" />
+          <path d="M8 13h8M8 17h8M8 9h2" />
+        </svg>
+        <span>Read the full analysis (PDF)</span>
+      </a>
+      <a class="contact-link" href="../assets/files/ballpark-conditions-analysis.xlsx" download>
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12" />
+          <path d="m7 12 5 5 5-5" />
+          <path d="M5 21h14" />
+        </svg>
+        <span>Download the Excel workbook</span>
+      </a>
+    </div>
 
     <h2>Question</h2>
     <p>
-      How much do environmental conditions — temperature, humidity, wind, park factors —
-      shift a hitter's weighted on-base average (wOBA) over a season?
+      Does <strong>average humidity</strong> affect offensive performance in Major League
+      Baseball, and does any effect survive once other environmental, ballpark, and roster
+      factors are controlled for? The tension is physical versus physiological: humid air is
+      less dense, so a batted ball meets less resistance and can carry farther — but humidity
+      also raises fatigue, dehydration, and cardiovascular strain on hitters. This study
+      tests whether, on net, humidity moves a team's home weighted on-base average (wOBA).
     </p>
 
     <h2>Data</h2>
     <p>
-      <em>TODO: describe your data sources — e.g., Statcast, weather API, park factors —
-      row counts, seasons covered.</em>
+      A team-season panel covering all 30 MLB teams across the <strong>2021–2024</strong>
+      seasons. The dependent variable is home wOBA (mean 0.318); the independent variable of
+      interest is average humidity (mean 0.682, i.e. 68.2%). wOBA is used over older metrics
+      like batting average or OPS because it captures total offensive production in a single
+      number without favoring a particular type of hitter.
+    </p>
+    <ul>
+      <li><strong>Dependent variable:</strong> Home wOBA</li>
+      <li><strong>Variable of interest:</strong> Average humidity percentage</li>
+      <li>
+        <strong>Controls:</strong> average fan attendance, hitting-coach years of service,
+        average ballpark dimension, average temperature, windspeed, position-player payroll,
+        and sprint speed
+      </li>
+      <li>
+        <strong>Dropped:</strong> ballpark elevation (multicollinear with humidity and
+        temperature) and total home plate appearances (severe endogeneity)
+      </li>
+    </ul>
+    <p>Sources:</p>
+    <ul>
+      <li><a href="https://baseballsavant.mlb.com/leaderboard/expected_statistics" target="_blank" rel="noopener">Baseball Savant (Statcast)</a> — wOBA and sprint speed</li>
+      <li>Weather World database — humidity, wind speed, and temperature</li>
+      <li><a href="https://www.ballparksofbaseball.com/comparisons/" target="_blank" rel="noopener">Ballparks of Baseball</a> — ballpark dimensions</li>
+      <li>Sports Library — ballpark elevation</li>
+      <li><a href="https://www.espn.com/mlb/attendance" target="_blank" rel="noopener">ESPN</a> — average fan attendance</li>
+      <li><a href="https://www.spotrac.com/mlb/payroll" target="_blank" rel="noopener">Spotrac</a> — position-player payroll</li>
+      <li>Hitting-coach years of service — researched individually per team</li>
+    </ul>
+
+    <h2>Methodology</h2>
+    <p>
+      I estimate the relationship with ordinary least squares (OLS) regression across five
+      specifications — a baseline model plus alternative specifications that test the
+      robustness of the results. The general form of the regression is:
+    </p>
+    <p class="equation">
+      wOBA<sub>it</sub> = β<sub>0</sub> + β<sub>1</sub>&thinsp;Humidity<sub>it</sub>
+      + γX<sub>it</sub> + ε<sub>it</sub>
+    </p>
+    <p>
+      where <em>X</em> is the set of controls (average fan attendance, hitting-coach years of
+      service, average temperature, and average ballpark dimension). Fan attendance is scaled
+      by dividing by 1,000 so its coefficient is readable. The baseline is then extended with
+      four alternative specifications: adding position-player payroll and sprint speed;
+      adding annual fixed effects; replacing payroll with its natural logarithm; and removing
+      the top and bottom ten wOBA outliers. Standard errors appear in parentheses beneath
+      each coefficient.
     </p>
 
-    <h2>Method</h2>
-    <p>
-      <em>TODO: outline how you joined game-level environmental data to plate appearances,
-      how you controlled for hitter quality, and the model you fit.</em>
+    <h2>Results</h2>
+
+    <figure class="figure">
+      <img src="../assets/images/woba-figure1-scatter.png"
+           alt="Scatterplot of average humidity percentage versus home wOBA for all 30 MLB teams, 2021–2024, showing a broad spread with no clear relationship" loading="lazy" />
+      <figcaption>
+        Figure 1 — Average humidity vs. home wOBA across all 30 teams (2021–24). The wide
+        spread shows no clear bivariate relationship, motivating the regression analysis.
+      </figcaption>
+    </figure>
+
+    <h3>Table 1 — Descriptive Statistics of MLB Teams (2021–24)</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th scope="col">Variable</th><th scope="col">Mean</th><th scope="col">Std. Deviation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Weighted On-Base Average</td><td>0.318</td><td>0.018</td></tr>
+          <tr><td>Average Humidity</td><td>0.682</td><td>0.106</td></tr>
+          <tr><td>Average Fan Attendance</td><td>26,135.53</td><td>9,539.48</td></tr>
+          <tr><td>Hitting Coach Years of Experience</td><td>2.071</td><td>2.166</td></tr>
+          <tr><td>Average Ballpark Dimension (ft)</td><td>354.566</td><td>6.649</td></tr>
+          <tr><td>Average Temperature (°F)</td><td>73.129</td><td>3.934</td></tr>
+          <tr><td>Windspeed (mph)</td><td>6.900</td><td>1.111</td></tr>
+          <tr><td>Ballpark Elevation (ft)</td><td>517.600</td><td>932.578</td></tr>
+          <tr><td>Position Player Payroll</td><td>80,184,003.53</td><td>38,710,652.90</td></tr>
+          <tr><td>Sprint Speed (ft/sec)</td><td>27.313</td><td>0.379</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Table 2 — Regression Results: Impact on wOBA</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th scope="col">Variable</th>
+            <th scope="col">(1)</th><th scope="col">(2)</th><th scope="col">(3)</th>
+            <th scope="col">(4)</th><th scope="col">(5)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Humidity</td>
+            <td>−0.036**<span class="se">(0.015)</span></td>
+            <td>−0.030**<span class="se">(0.014)</span></td>
+            <td>−0.031**<span class="se">(0.014)</span></td>
+            <td>−0.033**<span class="se">(0.013)</span></td>
+            <td>−0.022<span class="se">(0.014)</span></td>
+          </tr>
+          <tr>
+            <td>Average Fan Attendance</td>
+            <td></td>
+            <td>0.001***<span class="se">(1.513e-04)</span></td>
+            <td>0.001***<span class="se">(1.584e-04)</span></td>
+            <td>0.001***<span class="se">(1.580e-04)</span></td>
+            <td>0.001***<span class="se">(1.540e-04)</span></td>
+          </tr>
+          <tr>
+            <td>Hitting Coach Years of Service</td>
+            <td></td><td></td>
+            <td>0.001<span class="se">(1.540e-04)</span></td>
+            <td>0.001<span class="se">(7.050e-04)</span></td>
+            <td>0.001<span class="se">(6.850e-04)</span></td>
+          </tr>
+          <tr>
+            <td>Average Ballpark Dimension</td>
+            <td></td><td></td><td></td>
+            <td>−2.737e-04<span class="se">(2.240e-04)</span></td>
+            <td>−3.137e-04<span class="se">(2.190e-04)</span></td>
+          </tr>
+          <tr>
+            <td>Average Temperature</td>
+            <td></td><td></td><td></td><td></td>
+            <td>0.001***<span class="se">(3.780e-04)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      Standard errors in parentheses. Humidity is a percentage expressed as a decimal.
+      *** significant at α = .01, ** at α = .05, * at α = .10.
+    </p>
+
+    <h3>Table 3 — Alternative Specifications: Impact on wOBA</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th scope="col">Variable</th>
+            <th scope="col">(1)</th><th scope="col">(2)</th><th scope="col">(3)</th>
+            <th scope="col">(4)</th><th scope="col">(5)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Humidity</td>
+            <td>−0.022<span class="se">(0.014)</span></td>
+            <td>−0.022<span class="se">(0.014)</span></td>
+            <td>−0.019<span class="se">(0.013)</span></td>
+            <td>−0.022<span class="se">(0.014)</span></td>
+            <td>−0.001<span class="se">(0.013)</span></td>
+          </tr>
+          <tr>
+            <td>Average Fan Attendance</td>
+            <td>0.001***<span class="se">(1.540e-04)</span></td>
+            <td>0.001***<span class="se">(2.247e-04)</span></td>
+            <td>0.001***<span class="se">(1.505e-04)</span></td>
+            <td>4.938e-04**<span class="se">(2.068e-04)</span></td>
+            <td>4.974e-04***<span class="se">(1.355e-04)</span></td>
+          </tr>
+          <tr>
+            <td>Hitting Coach Years of Service</td>
+            <td>0.001<span class="se">(6.850e-04)</span></td>
+            <td>0.001<span class="se">(0.001)</span></td>
+            <td>0.001<span class="se">(0.001)</span></td>
+            <td>0.001<span class="se">(0.001)</span></td>
+            <td>0.001<span class="se">(0.001)</span></td>
+          </tr>
+          <tr>
+            <td>Average Ballpark Dimension</td>
+            <td>−3.137e-04<span class="se">(2.190e-04)</span></td>
+            <td>−3.137e-04<span class="se">(2.212e-04)</span></td>
+            <td>−3.313e-04*<span class="se">(1.990e-04)</span></td>
+            <td>−3.260e-04<span class="se">(2.159e-04)</span></td>
+            <td>−1.866e-05<span class="se">(2.077e-04)</span></td>
+          </tr>
+          <tr>
+            <td>Average Temperature</td>
+            <td>0.001***<span class="se">(3.780e-04)</span></td>
+            <td>0.001***<span class="se">(3.887e-04)</span></td>
+            <td>0.001***<span class="se">(3.459e-04)</span></td>
+            <td>0.001***<span class="se">(3.739e-04)</span></td>
+            <td>0.001**<span class="se">(3.173e-04)</span></td>
+          </tr>
+          <tr>
+            <td>Position Player Payroll</td>
+            <td></td>
+            <td>5.946e-11<span class="se">(5.527e-11)</span></td>
+            <td></td>
+            <td>0.001**<span class="se">(3.118e-03)</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Sprint Speed (ft/sec)</td>
+            <td></td>
+            <td>−0.001<span class="se">(0.004)</span></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr class="indicator"><td>Annual Fixed Effects</td><td>No</td><td>No</td><td>Yes</td><td>No</td><td>No</td></tr>
+          <tr class="indicator"><td>Natural Log — Position Player Payroll</td><td>No</td><td>No</td><td>No</td><td>Yes</td><td>No</td></tr>
+          <tr class="indicator"><td>Remove wOBA Outliers</td><td>No</td><td>No</td><td>No</td><td>No</td><td>Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      Standard errors in parentheses. Humidity is a percentage expressed as a decimal.
+      *** significant at α = .01, ** at α = .05, * at α = .10.
     </p>
 
     <h2>Findings</h2>
     <p>
-      <em>TODO: 2–4 bullet points of what actually moved the needle, and by how much.</em>
+      The headline result is a <strong>null finding: average humidity does not have a
+      statistically significant effect on offensive production</strong> once relevant
+      controls are included.
     </p>
-
-    <h2>Visuals</h2>
-    <p><em>TODO: drop chart images into <code>../assets/images/</code> and embed here.</em></p>
+    <ul>
+      <li>
+        <strong>Humidity's apparent effect is omitted-variable bias.</strong> Humidity looks
+        significant at the α = .05 level in the early baseline models, but the moment
+        <strong>average temperature</strong> is added, the humidity coefficient loses
+        significance (p = 0.125). Temperature captures environmental variation that humidity
+        was standing in for.
+      </li>
+      <li>
+        <strong>The null result holds everywhere.</strong> Across all four alternative
+        specifications — adding payroll and sprint speed, annual fixed effects, log payroll,
+        and removing wOBA outliers — humidity stays insignificant. Its estimated effect is
+        statistically indistinguishable from zero.
+      </li>
+      <li>
+        <strong>Average fan attendance</strong> is a consistently positive, highly
+        significant predictor (α = .01 in most specifications) — larger home crowds line up
+        with higher home offensive output.
+      </li>
+      <li>
+        <strong>Average temperature</strong> is positive and significant at α = .01 once
+        included (easing to α = .05 when wOBA outliers are removed) — warmer conditions
+        associate with more offense.
+      </li>
+      <li>
+        <strong>Payroll matters only in log form.</strong> Raw position-player payroll is
+        insignificant, but its natural logarithm is significant at α = .05 — consistent with
+        diminishing returns to spending.
+      </li>
+      <li>
+        <strong>Hitting-coach experience and ballpark dimension</strong> were not significant
+        in any specification.
+      </li>
+    </ul>
+    <p>
+      Taken together, the likely interpretation is that the physical benefit of less-dense
+      humid air is offset by the physiological toll humidity places on hitters — leaving no
+      net effect on offensive production.
+    </p>
   </main>
-
-  <footer class="site-footer">
-    <p><a href="../index.html">Home</a></p>
-  </footer>
 </body>
 </html>
